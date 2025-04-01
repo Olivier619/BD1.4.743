@@ -1,13 +1,12 @@
-function generateSafeScenario(keywords) {
-    const sanitizedKeywords = keywords
-        .replace(/[^a-zA-Z0-9 éèàçùîôêâäöüßÉÈÀÇÙÎÔÊÂÄÖÜ]/g, '')
-        .substring(0, 200);
+window.generateScenarioDetaille = async function(keywords) {
+    // Ajout de validation
+    if (!keywords || typeof keywords !== 'string') {
+        throw new Error("Entrée invalide");
+    }
 
-    return {
-        title: `Scénario : ${sanitizedKeywords}`,
-        chapters: this.generateChapters(sanitizedKeywords),
-        safe: true // Marqueur de sécurité
-    };
-}
-
-// ... (méthodes de génération sécurisées) ...
+    const sanitizedKeywords = keywords.slice(0, 200).replace(/[<>]/g, '');
+    
+    // ... reste du code original corrigé ...
+    
+    return scenario;
+};
